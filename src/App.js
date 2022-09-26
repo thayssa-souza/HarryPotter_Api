@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import * as S from './Styles/globalStyle'
+import * as S from './Styles/globalStyle';
 import Header from './Components/Header';
 import Main from './Components/Main';
+import Api from './Components/Api';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </div>
       <div>
         <Main />
+        <Api />
       </div>
     </section>
   );
