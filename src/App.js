@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import * as S from './Styles/globalStyle';
 import Header from './Components/Header';
@@ -14,6 +15,8 @@ function App() {
       </div>
       <div>
         <Main />
+      </div>
+      <div>
         <Api />
       </div>
     </section>

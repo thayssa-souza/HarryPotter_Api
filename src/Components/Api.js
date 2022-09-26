@@ -1,14 +1,17 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import * as S from '../Styles/mainStyle';
 
 const Api = () => {
-    const [info, setInfo] = useState([]);
+    const [data, setData] = useState([]);
+
+    const url = 'https://hp-api.herokuapp.com/api/characters';
 
     useEffect(() => {
         axios
-            .get("https://hp-api.herokuapp.com/api/characters")
+            .get(url)
             .then((resposta) => {
-                setInfo(resposta.data.results);
+                setData(resposta.data);
             })
             .catch((error) => {
                 console.log("Erro ao tentar se comunicar com o servidor, tente novamente mais tarde.", error);
@@ -16,21 +19,20 @@ const Api = () => {
     }, [])
 
     return(
-        <section>
-            {info.map((item) => (
-                <div>
+        <S.Container>
+            {data.map((item, index) => (
+                <S.Div key={index}>
                     <figure>
-                        <img src={item.image} alt={item.name} />
+                        <S.Images src={item.image} alt={item.name} />
                     </figure>
                     <ul>
-                        <li>{item.name}</li>
-                        <li>{item.gender}</li>
-                        <li>{item.house}</li>
+                        <S.Text>{item.name}</S.Text>
+                        <S.Text>{item.house}</S.Text>
                     </ul>
-                </div>
+                </S.Div>
                 ))}
-        </section>
+        </S.Container>
     );
-};
+}
 
 export default Api;
